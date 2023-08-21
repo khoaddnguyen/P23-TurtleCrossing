@@ -9,16 +9,25 @@ class Player(Turtle):
     def __init__(self):
         super().__init__()
         self.shape("turtle")
+        self.color("yellow")
         self.penup()
-        self.goto(STARTING_POSITION)
+        self.go_to_start()
         self.left(90)
 
     def go_up(self):
         new_y = self.ycor() + MOVE_DISTANCE
         self.goto(self.xcor(), new_y)
 
-    def reset_position(self):
+    def go_to_start(self):
         self.goto(STARTING_POSITION)
+
+    # 4. Detect when turtle reaches other side
+    def is_at_finish_line(self):
+        if self.ycor() > FINISH_LINE_Y:
+            return True
+        else:
+            return False
+
 
 
 
